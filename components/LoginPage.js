@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image , TextInput ,ScrollView , TouchableOpacity} from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+// import imgSrc from '../assets/coop.jpg';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -16,10 +17,9 @@ const LoginPage = () => {
         navigation.navigate("Register");
     }
   return (
-      <ScrollView>
     <View style={styles.container}>
     <View>
-     <Image source={require('../assets/coop.jpg')} />
+     <Image style={styles.image} source={require('../assets/coop.jpg')} />
     </View>
     <View style = {styles.emailView}>
     <Text>ENTER YOUR EMAIL</Text>
@@ -55,7 +55,6 @@ const LoginPage = () => {
 </TouchableOpacity>
   
 </View>
-    </ScrollView>
   );
 }
 export default LoginPage 
@@ -67,7 +66,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image :{
-    marginBottom: 40
+    marginTop: 40,
+    marginBottom: 40,
+    height: 300
  
   },
   inputView: {

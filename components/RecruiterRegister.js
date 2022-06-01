@@ -1,12 +1,22 @@
 import {KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import {auth} from '../firebase';
 
 const RecruiterRegisterScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigation = useNavigation();
     const handleSignUp = () => {
-        console.log("signedup");
+        
+        auth.createUserWithEmailAndPassword(email, password).then(userCred => {
+          const user = userCred.user;
+          console.log("Recruiter Registered with:", user.email);
+          alert("Your registered successfully");
+          alert("You are Redirected to Login Page.");
+          navigation.navigate("Login");
+        }).catch(error => alert(error.message))
     }
 
    return (
