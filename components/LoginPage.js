@@ -1,16 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image , TextInput ,ScrollView , TouchableOpacity} from 'react-native';
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigation = useNavigation();
 
     const loginPressed = () =>{
         console.log("loginPressed");
     }
     const registerPressed = () =>{
         console.log("registerPressed");
+        navigation.navigate("Register");
     }
   return (
       <ScrollView>
