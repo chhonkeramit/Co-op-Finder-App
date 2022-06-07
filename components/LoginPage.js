@@ -19,7 +19,7 @@ const LoginPage = () => {
   return (
     <View style={styles.container}>
     <View>
-     <Image style={styles.image} source={require('../assets/.jpg')} />
+     <Image style={styles.image} source={require('../assets/coop.jpg')} />
     </View>
     <View style = {styles.emailView}>
     <Text>ENTER YOUR EMAIL</Text>
