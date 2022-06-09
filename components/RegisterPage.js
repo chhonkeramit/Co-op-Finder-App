@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
       height:55,
       alignItems:"center",
       justifyContent:"center",
-      marginTop:40,
+      marginTop:50,
       backgroundColor:"#00BFFF",
     },
     image1:{
@@ -73,10 +73,11 @@ const styles = StyleSheet.create({
     },
     image:{
       flex:1,
-      marginTop:20,
+      marginTop:10,
       marginLeft:10,
       width:150,
-      height:150,
+      height:145,
+      marginBottom:10
       
     },
     description:{
