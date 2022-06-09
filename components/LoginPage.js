@@ -1,22 +1,30 @@
-import { StyleSheet, Text, View, Image , TextInput ,ScrollView , TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image , TextInput , TouchableOpacity} from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-// import imgSrc from '../assets/coop.jpg';
+import { auth } from '../firebase'
+
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('amit@gmail.com');
+    const [password, setPassword] = useState('amit@123');
 
     const navigation = useNavigation();
 
     const loginPressed = () =>{
         console.log("loginPressed");
+        auth.signInWithEmailAndPassword(email, password)
+    .then(userCredentials => {
+      const user = userCredentials.user;
+      console.log('Logged in with:', user.email);
+      navigation.navigate("Home")
+    })
+    .catch(error => alert(error.message));
     }
     const registerPressed = () =>{
         console.log("registerPressed");
         navigation.navigate("Register");
     }
-  return (
+  return (<>
     <View style={styles.container}>
     <View>
      <Image style={styles.image} source={require('../assets/coop.jpg')} />
@@ -55,7 +63,7 @@ const LoginPage = () => {
 </TouchableOpacity>
   
 </View>
-  );
+</>);
 }
 export default LoginPage 
 const styles = StyleSheet.create({
