@@ -10,14 +10,25 @@ const RecruiterRegisterScreen = () => {
     const navigation = useNavigation();
     const handleSignUp = () => {
         
-        auth.createUserWithEmailAndPassword(email, password).then(userCred => {
-          const user = userCred.user;
-          console.log("Recruiter Registered with:", user.email);
-          alert("Your registered successfully");
-          alert("You are Redirected to Login Page.");
-          navigation.navigate("Login");
-        }).catch(error => alert(error.message))
-    }
+      if(email == "" || password == "")
+      {
+         alert("please enter email and password both")
+      }
+        else if(password.length >=8 && password.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?!@$%^&*-]).*$/))
+        {
+      auth.createUserWithEmailAndPassword(email, password).then(userCred => {
+        const user = userCred.user;
+        console.log("Student Registered with:", user.email);
+        alert("Your registered successfully");
+        alert("You are Redirected to Login Page.");
+        navigation.navigate("Login");
+      }).catch(error => alert(error.message))
+       }
+       else{
+        alert("please enter valid password with condition of atlest one uppercase letter and one lowecase letter and one special characher(#?!^~@_&-$%) and minimum of 8 charachters")
+       }
+  }
+    
 
    return (
     <KeyboardAvoidingView
