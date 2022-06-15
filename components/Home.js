@@ -2,12 +2,16 @@ import React from 'react'
 import { useState,useEffect} from "react";
 import { View,Text,Image,ScrollView,StyleSheet} from "react-native";
 import { Card } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 import { auth, fireDB } from '../firebase'
 
 const Home = () => {
     const [displayList, setUserLocation] = useState([[]]);
+    const [colorActive, setColor] = useState('#89CFF0')
+
 
     useEffect(() => {
         //Runs on every render
@@ -36,23 +40,33 @@ const Home = () => {
   return (
     <ScrollView>
         <View>
-          
+        <Icon style={{marginLeft:'46%'}} name='plus' size={40} color='green' />
         {displayList.map((row, ind) => {
                 {console.log("~~~~~~~~~~ row:", row)};
-                return ( <View style = {styles.listitem}>
+                return ( <View key={ind} style = {styles.listitem}>
 
-                  <Card key={ind}>
+                  <Card>
                     <Text style={styles.score} >Position: {row[2]}</Text>
-                    <Text style={styles.score} >Job Type: {row[3]}</Text>
+                    <Text style={{
+                      fontSize: 15,
+                      textAlign: 'center',
+                      padding: 8,
+                      color: 'black',
+                      fontWeight: 'bold',
+                      backgroundColor: colorActive,
+                      display: 'flex',
+                    }} onPress={() => setColor('#00bfff')} ><Icon name='rocket' size={20} color='orangered' /> {row[3]}</Text>
                     <Text style={styles.title} >{row[1]}</Text>
+                    
                   </Card>
-
+                 
                 </View>         
 )
             })}
            
         </View>
     </ScrollView>
+ 
   )
 }
 
@@ -81,15 +95,16 @@ const styles = StyleSheet.create({
           flexDirection:'column',
           alignItems :'center',
           padding :10,
+          backgroundColor:'#d7dbc8'
           
         },
         title: {
              fontSize : 16,
              textAlign : 'center',
              padding : 5,
-             color: 'orangered',   
-             
+             color: 'gray',   
            display:'flex',
+           height: 82
           
         },
         text: {
@@ -111,12 +126,12 @@ const styles = StyleSheet.create({
         fontSize : 15,
         textAlign : 'center',
         padding : 8,
-        color: 'gray', 
+        color: 'black', 
         fontWeight : 'bold',   
-        
         display:'flex',
        
        },
+      
        button: {
         backgroundColor: '#0782F9',
         width: '40%',

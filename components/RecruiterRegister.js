@@ -1,4 +1,4 @@
-import {KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View , Image} from 'react-native'
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {auth} from '../firebase';
@@ -36,6 +36,8 @@ const RecruiterRegisterScreen = () => {
       behavior="padding"
     >
      <View style={styles.inputContainer}>
+     <Image style={{width:"100%", height:400, alignItems:'center',justifyContent:'center',position:'relative',margin:'auto'}} source={require('../assets/recruitment.jpg')}></Image>
+
          <TextInput
           placeholder="Enter Email"
           value={email}
