@@ -3,6 +3,7 @@ import { useState,useEffect} from "react";
 import { View,Text,Image,ScrollView,StyleSheet} from "react-native";
 import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 
 
@@ -11,6 +12,7 @@ import { auth, fireDB } from '../firebase'
 const Home = () => {
     const [displayList, setUserLocation] = useState([[]]);
     const [colorActive, setColor] = useState('#89CFF0')
+    const navigation = useNavigation();
 
 
     useEffect(() => {
@@ -40,7 +42,7 @@ const Home = () => {
   return (
     <ScrollView>
         <View>
-        <Icon style={{marginLeft:'46%'}} name='plus' size={40} color='green' />
+        <Icon onPress={() => navigation.navigate("PostJob")} style={{marginLeft:'46%'}} name='plus' size={40} color='green' />
         {displayList.map((row, ind) => {
                 {console.log("~~~~~~~~~~ row:", row)};
                 return ( <View key={ind} style = {styles.listitem}>
