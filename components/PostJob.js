@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
-import {Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View,Image } from 'react-native'
 import {PostJobdetails, PostJobdetailsref} from '../models/PostJobdetails';
 
 
@@ -43,6 +43,8 @@ const handlepostjob = async () => {
       behavior="padding"
     >    
       <View style={styles.inputContainer}>
+      <Image style={{width:"100%", height:100, alignItems:'center',justifyContent:'center',position:'relative',margin:'auto'}} source={require('../assets/job.jpg')}></Image>
+
       <TextInput
           placeholder="Enter Company_Name"
           value={Company_Name}
