@@ -35,6 +35,8 @@ const handlepostjob = async () => {
     Job_Title:Job_Title,Job_Type:Job_Type,Location:Location};
     const JobInstance = new PostJobdetails(dataObj);
     await JobInstance.addJobDetails();
+    alert("Your Job is Posted Now !")
+
   }
 
   return (
