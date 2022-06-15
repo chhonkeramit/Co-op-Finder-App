@@ -7,19 +7,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import StudentRegister from './components/StudentRegister';
 import RecruiterRegister from './components/RecruiterRegister';
 
+
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator style={styles.container}>
+
         <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginPage} />
+        <Stack.Screen name="Register" component={RegisterPage} />
+        <Stack.Screen name="StudentRegister" component={StudentRegister} />
+        <Stack.Screen name="RecruiterRegister" component={RecruiterRegister} />
         <Stack.Screen name="Home" component={Home} />
-         <Stack.Screen name="Register" component={RegisterPage} />
-         <Stack.Screen name="StudentRegister" component={StudentRegister} />
-         <Stack.Screen name="RecruiterRegister" component={RecruiterRegister} />
-
-
+       
       </Stack.Navigator>
     </NavigationContainer>
   );
