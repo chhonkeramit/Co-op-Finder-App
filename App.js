@@ -15,11 +15,11 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator style={styles.container}>
         <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginPage} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={Home} options={{ title: 'Job Feed' }}/>
          <Stack.Screen name="Register" component={RegisterPage} />
          <Stack.Screen name="StudentRegister" component={StudentRegister} />
          <Stack.Screen name="RecruiterRegister" component={RecruiterRegister} />
-         <Stack.Screen name="PostJob" component={PostJob} />
+         <Stack.Screen name="PostJob" component={PostJob} options={{ title: 'Post Your Job' }} />
          
       </Stack.Navigator>
     </NavigationContainer>

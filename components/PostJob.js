@@ -31,13 +31,20 @@ const PostJob = () => {
   }, []);
 
 const handlepostjob = async () => {
+  if(Company_Name.length > 0 && Job_Description.length > 0 &&
+    Job_Title.length > 0 && Job_Type.length > 0 && Location.length > 0){
     const dataObj = { Company_Name:Company_Name,Job_Description:Job_Description,
     Job_Title:Job_Title,Job_Type:Job_Type,Location:Location};
     const JobInstance = new PostJobdetails(dataObj);
     await JobInstance.addJobDetails();
     alert("Your Job is Posted Now !")
+  }
+  else{
+    alert("Please enter correct details!")
+  }
 
   }
+  
 
   return (
     <KeyboardAvoidingView
@@ -46,29 +53,23 @@ const handlepostjob = async () => {
     >    
       <View style={styles.inputContainer}>
       <Image style={{width:"100%", height:100, alignItems:'center',justifyContent:'center',position:'relative',margin:'auto'}} source={require('../assets/job.jpg')}></Image>
-
       <TextInput
-          placeholder="Enter Company_Name"
-          value={Company_Name}
-          onChangeText={text => setCompany_Name(text)}
-          style={styles.input}
-        />
-         <TextInput
-          placeholder="Enter Job_Description"
-          value={Job_Description}
-          onChangeText={text => setJob_Description(text)}
-          style={styles.input}
-        />
-       
-        <TextInput
-          placeholder="Enter Job_Title"
+          placeholder="Enter Job title"
           value={Job_Title}
           onChangeText={text => setJob_Title(text)}
           style={styles.input}
         />
 
+      <TextInput
+          placeholder="Enter Company Name"
+          value={Company_Name}
+          onChangeText={text => setCompany_Name(text)}
+          style={styles.input}
+        />
+           
+
          <TextInput
-          placeholder="Enter Job_Type"
+          placeholder="Enter Job type"
           value={Job_Type}
           onChangeText={text => setJob_Type(text)}
           style={styles.input}
@@ -79,6 +80,13 @@ const handlepostjob = async () => {
           value={Location}
           onChangeText={text => setLocation(text)}
           style={styles.input}
+        />
+
+     <TextInput
+          placeholder="Enter Job description"
+          value={Job_Description}
+          onChangeText={text => setJob_Description(text)}
+          style={styles.input1}
         />
       </View>
 
@@ -112,6 +120,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+  },
+  input1: {
+    backgroundColor: 'white',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 30,
+    marginTop: 5,
+    height: 200,
   },
   buttonContainer: {
     width: '60%',

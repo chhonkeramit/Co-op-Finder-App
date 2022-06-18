@@ -1,20 +1,19 @@
 import React from 'react'
 import { useState,useEffect} from "react";
-import { View,Text,Image,ScrollView,StyleSheet} from "react-native";
+import { View,Text,Image,ScrollView,StyleSheet,TextInput,TouchableOpacity} from "react-native";
 import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
-
-
-
 import { auth, fireDB } from '../firebase'
 
 const Home = () => {
     const [displayList, setUserLocation] = useState([[]]);
     const [colorActive, setColor] = useState('#89CFF0')
     const navigation = useNavigation();
-
-
+    const [Keyword, setKeyword] = useState();
+    const [datasearched, setdatasearched] = useState([[]]);
+  
+    // console.log(Keyword?.length);
     useEffect(() => {
         //Runs on every render
             dummyData();
@@ -25,7 +24,7 @@ const Home = () => {
         fireDB.collection("Job-Postings").get().then((querySnapshot) => {
             let bigArr = []
           querySnapshot.forEach((doc) => {
-              console.log(`${doc.id} => ${doc.data()}`)
+              // console.log(`${doc.id} => ${doc.data()}`)
               let newArr = []
               newArr.push(`${doc.data().Company_Name}`)
               newArr.push(`${doc.data().Job_Description}`)
@@ -39,16 +38,57 @@ const Home = () => {
       });
        }
 
+       const SearchJobs = () =>{
+         console.log("searching data");
+         let dataarr = [];
+      displayList.forEach(element => {
+       for( var i = 0 ;i< element.length ;i++)
+       {
+         if(element[i].match(Keyword))
+         {
+         dataarr.push(element);  
+         setdatasearched(dataarr);
+        console.log("data displayed",datasearched);
+      }
+     }
+      })
+       }
+  
+
+    const postresume = () =>{
+      // console.log("Post resume");
+  }
+  const Postajob = () =>{
+    // console.log("post jobs");
+    navigation.navigate("PostJob");
+}
   return (
     <ScrollView>
         <View>
-        <Icon onPress={() => navigation.navigate("PostJob")} style={{marginLeft:'46%'}} name='plus' size={40} color='green' />
-        {displayList.map((row, ind) => {
-                {console.log("~~~~~~~~~~ row:", row)};
+
+<TextInput placeholder="Keyword" value={Keyword}
+ onChangeText={text => setKeyword(text)}  style={styles.score} />
+
+<TouchableOpacity  style={styles.button} onPress={SearchJobs}>
+  <Text>Search Jobs</Text>
+</TouchableOpacity>
+<TouchableOpacity  style={styles.buttonText} onPress={postresume}>
+  <Text style={styles.description} >Post your resume</Text>
+</TouchableOpacity>
+<TouchableOpacity  style={styles.buttonText} onPress={Postajob}>
+  <Text style={styles.description} >Employers: Post a job</Text>
+</TouchableOpacity>
+       {/* <Icon onPress={() => navigation.navigate("PostJob")} style={{marginLeft:'46%'}} name='plus' size={40} color='green' /> */}
+       
+        {Keyword?.length > 0 ?
+        
+    datasearched.map((row, ind) => {
+                // {console.log("~~~~~~~~~~ row:", row)};
                 return ( <View key={ind} style = {styles.listitem}>
 
                   <Card>
-                    <Text style={styles.score} >Position: {row[2]}</Text>
+                    <Text style={styles.score1} >{row[2]}</Text>
+                    <Text style={styles.score} >{row[0]}</Text>
                     <Text style={{
                       fontSize: 15,
                       textAlign: 'center',
@@ -59,12 +99,34 @@ const Home = () => {
                       display: 'flex',
                     }} onPress={() => setColor('#00bfff')} ><Icon name='rocket' size={20} color='orangered' /> {row[3]}</Text>
                     <Text style={styles.title} >{row[1]}</Text>
-                    
+
                   </Card>
-                 
-                </View>         
+                 </View>         
 )
-            })}
+            }):
+displayList.map((row, ind) => {
+                // {console.log("~~~~~~~~~~ row:", row)};
+                return ( <View key={ind} style = {styles.listitem}>
+
+                  <Card>
+                    <Text style={styles.score1} >{row[2]}</Text>
+                    <Text style={styles.score} >{row[0]}</Text>
+                    <Text style={{
+                      fontSize: 15,
+                      textAlign: 'center',
+                      padding: 8,
+                      color: 'black',
+                      fontWeight: 'bold',
+                      backgroundColor: colorActive,
+                      display: 'flex',
+                    }} onPress={() => setColor('#00bfff')} ><Icon name='rocket' size={20} color='orangered' /> {row[3]}</Text>
+                    <Text style={styles.title} >{row[1]}</Text>
+
+                  </Card>
+                 </View>         
+)
+            })
+        }
            
         </View>
     </ScrollView>
@@ -129,27 +191,42 @@ const styles = StyleSheet.create({
         textAlign : 'center',
         padding : 8,
         color: 'black', 
-        fontWeight : 'bold',   
+        // fontWeight : 'bold',   
         display:'flex',
        
        },
+       score1:{
+        fontSize : 20,
+        textAlign : 'center',
+        padding : 8,
+        color: 'black', 
+        fontWeight : 'bold',   
+        display:'flex', 
+       },
       
        button: {
-        backgroundColor: '#0782F9',
-        width: '40%',
-        borderRadius: 10,
-        alignItems: 'center',
+        width:"60%",
+        borderRadius:20,
+        height:30,
+        alignItems:"center",
+        justifyContent:"center",
+        marginLeft:80,
+        marginTop:20,
+        backgroundColor:"#00BFFF",
       }, 
       buttonText: {
-        color: 'white',
-        fontWeight: '700',
-        fontSize: 16,
+        width:"60%",
+        borderRadius:20,
+        alignItems:"center",
+        justifyContent:"center",
+        marginLeft:80,
+        marginTop:20,
       },
-      buttonalign:{
-          flexDirection : "row",
-        padding :10,
-        alignItems: 'flex-end',
-      }
+      description:{
+        fontSize:18,
+        color:"#00BFFF",
+        fontWeight:"900",
+      },
 });
 
 
