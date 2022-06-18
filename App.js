@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import StudentRegister from './components/StudentRegister';
 import RecruiterRegister from './components/RecruiterRegister';
 import PostJob from './components/PostJob';
+import JobDetail from './components/JobDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
          <Stack.Screen name="StudentRegister" component={StudentRegister} />
          <Stack.Screen name="RecruiterRegister" component={RecruiterRegister} />
          <Stack.Screen name="PostJob" component={PostJob} />
+         <Stack.Screen name="JobDetail" component={JobDetail} />
          
       </Stack.Navigator>
     </NavigationContainer>

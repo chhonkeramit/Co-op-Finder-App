@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState,useEffect} from "react";
-import { View,Text,Image,ScrollView,StyleSheet} from "react-native";
-import { Card } from 'react-native-elements';
+import { View,Text,Image,ScrollView,StyleSheet,TouchableOpacity,Button} from "react-native";
+import { Card  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
 
 
 import { auth, fireDB } from '../firebase'
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = () => {
     const [displayList, setUserLocation] = useState([[]]);
@@ -20,7 +21,7 @@ const Home = () => {
             dummyData();
 
       },[]);
-
+      
       function dummyData() {
         fireDB.collection("Job-Postings").get().then((querySnapshot) => {
             let bigArr = []
@@ -39,14 +40,22 @@ const Home = () => {
       });
        }
 
+       const cardSelected = (ind) => {
+              console.log("card selected"+ind);
+              // console.log(ind);
+              navigation.navigate("JobDetail",{index:ind})
+       }
+
   return (
     <ScrollView>
         <View>
         <Icon onPress={() => navigation.navigate("PostJob")} style={{marginLeft:'46%'}} name='plus' size={40} color='green' />
         {displayList.map((row, ind) => {
                 {console.log("~~~~~~~~~~ row:", row)};
-                return ( <View key={ind} style = {styles.listitem}>
-
+                return ( 
+                 
+                  <View key={ind} style = {styles.listitem}>
+                <TouchableOpacity onPress={() => cardSelected(ind)}>
                   <Card>
                     <Text style={styles.score} >Position: {row[2]}</Text>
                     <Text style={{
@@ -61,14 +70,14 @@ const Home = () => {
                     <Text style={styles.title} >{row[1]}</Text>
                     
                   </Card>
-                 
-                </View>         
-)
+                  </TouchableOpacity>
+                </View>  
+                      
+              )             
             })}
            
         </View>
     </ScrollView>
- 
   )
 }
 
