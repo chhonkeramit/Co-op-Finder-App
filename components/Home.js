@@ -55,7 +55,7 @@ const Home = () => {
                 return ( 
                  
                   <View key={ind} style = {styles.listitem}>
-                <TouchableOpacity onPress={() => cardSelected(ind)}>
+                <TouchableOpacity onPress={()=> cardSelected(ind)}>
                   <Card>
                     <Text style={styles.score} >Position: {row[2]}</Text>
                     <Text style={{
