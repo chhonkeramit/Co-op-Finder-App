@@ -1,17 +1,21 @@
 import React from 'react'
 import { useState,useEffect} from "react";
-import { View,Text,Image,ScrollView,StyleSheet} from "react-native";
+import { View,Text,Image,ScrollView,StyleSheet,TextInput,TouchableOpacity} from "react-native";
 import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faAnglesRight, faBriefcase, faClock, faLocationDot, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 
 
-
-import { auth, fireDB } from '../firebase'
+import { auth, fireDB } from '../firebase';
 
 const Home = () => {
     const [displayList, setUserLocation] = useState([[]]);
-    const [colorActive, setColor] = useState('#89CFF0')
+    const [Keyword, setKeyword] = useState();
+    const [datasearched, setdatasearched] = useState([[]]);
+
+
     const navigation = useNavigation();
 
 
@@ -39,32 +43,159 @@ const Home = () => {
       });
        }
 
+    //  testing
+       const SearchJobs = () =>{
+        console.log("searching data");
+        let dataarr = [];
+     displayList.forEach(element => {
+      for( var i = 0 ;i< element.length ;i++)
+      {
+        if(element[i].match(Keyword))
+        {
+        dataarr.push(element);  
+        setdatasearched(dataarr);
+       console.log("data displayed",datasearched);
+     }
+    }
+     })
+      }
+ 
+
+   const postresume = () =>{
+     // console.log("Post resume");
+ }
+ const Postajob = () =>{
+   // console.log("post jobs");
+   navigation.navigate("PostJob");
+}
+
+const cardSelected = (ind) => {
+  console.log("card selected"+ind);
+  // console.log(ind);
+  navigation.navigate("JobDetail",{index:ind})
+}
+
+
   return (
     <ScrollView>
         <View>
-        <Icon onPress={() => navigation.navigate("PostJob")} style={{marginLeft:'46%'}} name='plus' size={40} color='green' />
-        {displayList.map((row, ind) => {
-                {console.log("~~~~~~~~~~ row:", row)};
-                return ( <View key={ind} style = {styles.listitem}>
 
-                  <Card>
-                    <Text style={styles.score} >Position: {row[2]}</Text>
+{/* // testing  */}
+<View style={styles.alignSearch}>
+<TextInput placeholder="Search The Job " value={Keyword}
+ onChangeText={text => setKeyword(text)}  style={styles.score} />
+
+<TouchableOpacity style={styles.searchButton} onPress={SearchJobs}>
+  <Text style={{textAlign:'center', padding:8, fontWeight:'bold', color:'white'}}>Search Jobs</Text>
+</TouchableOpacity>
+</View>
+            {/* testing code** */}
+            {Keyword?.length > 0 ?
+        
+        datasearched.map((row, ind) => {
+                    // {console.log("~~~~~~~~~~ row:", row)};
+                    return ( <View key={ind} style = {styles.listitem}>
+    {/* <TouchableOpacity onPress={()=> cardSelected(ind)}> */}
+
+    <Card>
+                      <Text style={styles.score} >{row[2]}</Text>
+                      <Text style={styles.loc} >{row[0]}</Text>
+                      <Text style={styles.loc} ><FontAwesomeIcon icon={ faLocationDot } />{row[4]}</Text>
+  
+                    <View style={styles.align}>
                     <Text style={{
-                      fontSize: 15,
-                      textAlign: 'center',
-                      padding: 8,
-                      color: 'black',
-                      fontWeight: 'bold',
-                      backgroundColor: colorActive,
-                      display: 'flex',
-                    }} onPress={() => setColor('#00bfff')} ><Icon name='rocket' size={20} color='orangered' /> {row[3]}</Text>
-                    <Text style={styles.title} >{row[1]}</Text>
-                    
-                  </Card>
-                 
-                </View>         
-)
-            })}
+                        fontSize: 15,
+                        color: 'black',
+                        fontWeight: 'bold',
+                        backgroundColor: '#f3f2f1',
+                        marginBottom:5,
+                        width:'30%',
+                        textAlign:'center'
+                      }}><FontAwesomeIcon icon={ faMoneyBill } />  $30 - $40</Text>
+                      <Text style={{
+                        fontSize: 15,
+                        color: 'black',
+                        fontWeight: 'bold',
+                        backgroundColor: '#f3f2f1',
+                        marginBottom:5,
+                        width:'30%',
+                        textAlign:'center'
+                      }}  ><FontAwesomeIcon icon={ faBriefcase } />{row[3]}</Text>
+                      
+                      <Text style={{
+                        fontSize: 15,
+                        color: 'black',
+                        fontWeight: 'bold',
+                        backgroundColor: '#f3f2f1',
+                        marginBottom:5,
+                        width:'30%',
+                        textAlign:'center'
+                      }}><FontAwesomeIcon icon={ faClock } />8 hour shift</Text>
+                      </View>
+                      <Text style={{
+                        fontSize: 15,
+                        color: 'black',
+                      }} ><FontAwesomeIcon icon={ faAnglesRight } color='royalblue'/>  Easily Apply to this Job</Text>
+                      <Text style={styles.title} >{row[1]}</Text>
+                      
+                    </Card>
+                    {/* </TouchableOpacity> */}
+
+                     </View>         
+    )
+                }):
+                displayList.map((row, ind) => {
+                  {console.log("~~~~~~~~~~ row:", row)};
+                  return ( <View key={ind} style = {styles.listitem}>
+  <TouchableOpacity onPress={()=> cardSelected(ind)}>
+
+                    <Card>
+                      <Text style={styles.score} >{row[2]}</Text>
+                      <Text style={styles.loc} >{row[0]}</Text>
+                      <Text style={styles.loc} ><FontAwesomeIcon icon={ faLocationDot } />{row[4]}</Text>
+  
+                    <View style={styles.align}>
+                    <Text style={{
+                        fontSize: 15,
+                        color: 'black',
+                        fontWeight: 'bold',
+                        backgroundColor: '#f3f2f1',
+                        marginBottom:5,
+                        width:'30%',
+                        textAlign:'center'
+                      }}><FontAwesomeIcon icon={ faMoneyBill } />  $30 - $40</Text>
+                      <Text style={{
+                        fontSize: 15,
+                        color: 'black',
+                        fontWeight: 'bold',
+                        backgroundColor: '#f3f2f1',
+                        marginBottom:5,
+                        width:'30%',
+                        textAlign:'center'
+                      }} onPress={() => setColor('#00bfff')} ><FontAwesomeIcon icon={ faBriefcase } />{row[3]}</Text>
+                      
+                      <Text style={{
+                        fontSize: 15,
+                        color: 'black',
+                        fontWeight: 'bold',
+                        backgroundColor: '#f3f2f1',
+                        marginBottom:5,
+                        width:'30%',
+                        textAlign:'center'
+                      }}><FontAwesomeIcon icon={ faClock } />8 hour shift</Text>
+                      </View>
+                      <Text style={{
+                        fontSize: 15,
+                        color: 'black',
+                      }} ><FontAwesomeIcon icon={ faAnglesRight } color='royalblue'/>  Easily Apply to this Job</Text>
+                      <Text style={styles.title} >{row[1]}</Text>
+                      
+                    </Card>
+                    </TouchableOpacity>
+
+                  </View>         
+  )
+              })}
            
         </View>
     </ScrollView>
@@ -79,6 +210,20 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         flex:1,
     },
+    alignSearch:{
+      flexDirection:'row',
+      justifyContent: 'space-around'
+    },
+    align:{
+      flexDirection:'row',
+      justifyContent: 'space-between'
+    },
+    searchButton : {
+        backgroundColor:'#2557a7',
+        width: '25%',
+        borderRadius: 10,
+        
+    } ,
       separator :{
           height : 1,
           backgroundColor : "#dddddd",
@@ -94,9 +239,9 @@ const styles = StyleSheet.create({
 
       },
       listitem : {
-          flexDirection:'column',
-          alignItems :'center',
-          padding :10,
+          // flexDirection:'column',
+          // alignItems :'center',
+          // padding :10,
           backgroundColor:'#d7dbc8'
           
         },
@@ -125,9 +270,8 @@ const styles = StyleSheet.create({
             color: 'black',         
        },
        score:{
-        fontSize : 15,
-        textAlign : 'center',
-        padding : 8,
+        fontSize : 16,
+        
         color: 'black', 
         fontWeight : 'bold',   
         display:'flex',
