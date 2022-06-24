@@ -48,7 +48,9 @@ const JobDetail = ({route,navigation}) => {
           <TouchableOpacity><Text style={styles.ApplyButton}>APPLY NOW</Text></TouchableOpacity>
       </View>
       <View style = {styles.SecondContainer}>
-            <Text style={styles.durationHeading}>Job Term:</Text>
+            <Text style={styles.durationHeading}>Salary:</Text>
+            <Text style={styles.duration}>$20-30$ per hour</Text>
+            <Text style={styles.durationHeading}>Job Type:</Text>
             <Text style={styles.duration}>{displaydata[3]}</Text>
             <Text style={styles.detailsHeading}>Job Details:</Text>
             <Text style={styles.details}>{displaydata[1]}</Text>
