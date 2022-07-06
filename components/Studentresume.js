@@ -1,12 +1,11 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import {Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View,Image } from 'react-native'
-import {PostJobdetails, PostJobdetailsref} from '../models/PostJobdetails';
+import {Resumedetails, Resumedetailsref } from '../models/Resumedetails';
 
+const Studentresume= () => {
 
-const PostJob = () => {
-
-  const [PostJobdetail, setPostJobdetails] = useState([]);
+  const [Resumedetail, setResumedetail] = useState([]);
 
   const [Company_Name,setCompany_Name ] = useState('');
   const [Job_Description, setJob_Description] = useState('');
@@ -20,7 +19,7 @@ const PostJob = () => {
 
  
   useEffect(() => {
-    PostJobdetailsref.onSnapshot((query) => {
+    Resumedetailsref.onSnapshot((query) => {
       const objs = [];
       query.forEach((doc) => {
         objs.push({
@@ -28,22 +27,23 @@ const PostJob = () => {
           ...doc.data(),
         });
       });
-      setPostJobdetails(objs);
+      setResumedetail(objs);
     })
   }, []);
 
 const handlepostjob = async() => {
 
-  // if (Job_Title != '' && Company_Name != '' && Job_Type != '' && Location != '' && Job_Description != '') {
-  //   alert("Please fill the details");
-  // } else {
+//   if (Job_Title != '' && Company_Name != '' && Job_Type != '' && Location != '' && Job_Description != '') {
+//     alert("Please fill the details");
+    
+//   } else {
 
     const dataObj = { Company_Name:Company_Name,Job_Description:Job_Description,
     Job_Title:Job_Title,Job_Type:Job_Type,Location:Location,pay:pay};
-    const JobInstance = new PostJobdetails(dataObj);
-    await JobInstance.addJobDetails();
+    const JobInstance = new Resumedetails(dataObj);
+    await JobInstance.addResumeDetails();
     alert("Your Job is Posted Now !")
-  // }
+//   }
   }
 
   return (
@@ -109,7 +109,7 @@ const handlepostjob = async() => {
   )
 }
 
-export default PostJob
+export default Studentresume
 
 const styles = StyleSheet.create({
   container: {
