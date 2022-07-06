@@ -2,12 +2,17 @@ import { StyleSheet, Text, View, Image , TextInput , TouchableOpacity} from 'rea
 import React, { useState ,useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { auth, fireDB } from '../firebase'
+import { auth, fireDB } from '../firebase';
 import { ScrollView } from 'react-native-gesture-handler';
+
+
 
 const JobDetail = ({route,navigation}) => {
   const{index} = route.params;
   const [displaydata, setUserLocation] = useState([[]]);
+  const [job, setJob] = useState('');
+  const[member, setMember] = useState('');
+
 
   useEffect(() => {
     //Runs on every render
@@ -38,6 +43,27 @@ const JobDetail = ({route,navigation}) => {
       
   });
    }
+    
+  // async function ApplyJob() {
+          
+  //   try {
+  //     await console.log(job);
+  //     await console.log(member.email);
+
+  //   fireDB.collection(job).ref('Posts/').set({
+  //       job,
+  //   }).then((data)=>{
+  //       //success callback
+  //       console.log('data ' , data)
+  //   }).catch((error)=>{
+  //       //error callback
+  //       console.log('error ' , error)
+  //   })
+
+  //   } catch (error) {
+  //     console.log(error);
+  //   } 
+  //  }
      return (
       <ScrollView>
       
@@ -45,7 +71,10 @@ const JobDetail = ({route,navigation}) => {
           <Text style ={styles.title}>{displaydata[2]}</Text>
           <Text style = {styles.CompanyName}>{displaydata[0]}</Text>
           <Text style={styles.location}>{displaydata[4]}</Text>
-          <TouchableOpacity><Text style={styles.ApplyButton}>APPLY NOW</Text></TouchableOpacity>
+          <TouchableOpacity>
+          <Text style={styles.ApplyButton}>
+          APPLY NOW</Text>
+          </TouchableOpacity>
       </View>
       <View style = {styles.SecondContainer}>
             <Text style={styles.durationHeading}>Job Term:</Text>
