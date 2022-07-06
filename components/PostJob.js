@@ -13,6 +13,8 @@ const PostJob = () => {
   const [Job_Title, setJob_Title] = useState('');
   const [Job_Type, setJob_Type] = useState('');
   const [Location, setLocation] = useState('');
+  const [pay, setPay] = useState('');
+
 
   const navigation = useNavigation();
 
@@ -30,13 +32,18 @@ const PostJob = () => {
     })
   }, []);
 
-const handlepostjob = async () => {
+const handlepostjob = async() => {
+
+  if (Job_Title != '' || Company_Name != '' || Job_Type != '' || Location != '' || Job_Description != '') {
+    alert("Please fill the details");
+  } else {
+
     const dataObj = { Company_Name:Company_Name,Job_Description:Job_Description,
-    Job_Title:Job_Title,Job_Type:Job_Type,Location:Location};
+    Job_Title:Job_Title,Job_Type:Job_Type,Location:Location,pay:pay};
     const JobInstance = new PostJobdetails(dataObj);
     await JobInstance.addJobDetails();
     alert("Your Job is Posted Now !")
-
+  }
   }
 
   return (
@@ -72,6 +79,12 @@ const handlepostjob = async () => {
           placeholder="Location"
           value={Location}
           onChangeText={text => setLocation(text)}
+          style={styles.input}
+        />
+        <TextInput
+          placeholder="Pay"
+          value={pay}
+          onChangeText={text => setPay(text)}
           style={styles.input}
         />
 
@@ -126,7 +139,7 @@ const styles = StyleSheet.create({
     width: '60%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 11,
   },
   button: {
     backgroundColor: '#0782F9',
