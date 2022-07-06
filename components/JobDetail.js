@@ -40,6 +40,18 @@ const JobDetail = ({route,navigation}) => {
       
   });
    }
+   function ApplyButton(){
+    fireDB.collection(auth.currentUser?.email).add({
+      user: auth.currentUser?.email  ,
+      company_Name: displaydata[0],
+      Job_Title: displaydata[2],
+      location: displaydata[4],  
+    })
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+    })
+
+   }
      return (
       <ScrollView>
       
@@ -49,7 +61,7 @@ const JobDetail = ({route,navigation}) => {
           <Text style={styles.location}>{displaydata[4]}</Text>
           
            <View style={styles.align}>
-             <TouchableOpacity><Text style={styles.ApplyButton}>Apply now</Text></TouchableOpacity>
+             <TouchableOpacity onPress={ApplyButton}><Text style={styles.ApplyButton}>Apply now</Text></TouchableOpacity>
              <TouchableOpacity><Text style={{marginTop:13, fontSize:20, color:'gray'}}><FontAwesomeIcon color={'#a9a9a9'} size={30} icon={ faBookBookmark } />Saved Jobs</Text></TouchableOpacity>
            </View>
       </View>
