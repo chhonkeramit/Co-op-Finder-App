@@ -42,10 +42,12 @@ const JobDetail = ({route,navigation}) => {
    }
    function ApplyButton(){
     fireDB.collection(auth.currentUser?.email).add({
-      user: auth.currentUser?.email  ,
-      company_Name: displaydata[0],
+      User: auth.currentUser?.email  ,
+      Company_Name: displaydata[0],
+      Job_Description:displaydata[1],
       Job_Title: displaydata[2],
-      location: displaydata[4],  
+      Location: displaydata[4], 
+      Job_Type: displaydata[3]
     })
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);

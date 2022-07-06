@@ -10,6 +10,7 @@ import Tab from './Tab';
 import Profile from './Profile';
 import JobDetail from './components/JobDetail';
 import PostJob from './components/PostJob'
+import SavedJobs from './components/SavedJobs';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,8 @@ export default function App() {
          <Stack.Screen name="PostJob" component={PostJob} />
          <Stack.Screen name="Profile" component={Profile} />
          <Stack.Screen name="JobDetail" component={JobDetail} />
+         <Stack.Screen name="SavedJobs" component={SavedJobs} />
+
 
          
       </Stack.Navigator>
