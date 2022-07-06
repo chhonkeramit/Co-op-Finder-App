@@ -12,7 +12,7 @@ const Profile = ({navigation}) => {
      
       </TouchableOpacity>
       <TouchableOpacity
-          onPress={() => navigation.navigate('ViewCart')}
+          onPress={() => navigation.navigate('Login')}
         
       >
          <Text style={{bottom:-33,right:-82, fontWeight:'bold'}}>Sign Out</Text>
