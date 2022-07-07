@@ -11,6 +11,9 @@ import Profile from './Profile';
 import JobDetail from './components/JobDetail';
 import PostJob from './components/PostJob'
 import SavedJobs from './components/SavedJobs';
+import Studentoremployee from './components/Studentoremployee';
+import Studentresume from './components/Studentresume';
+import Tabstu from './Tabstu';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,8 +31,11 @@ export default function App() {
          <Stack.Screen name="Profile" component={Profile} />
          <Stack.Screen name="JobDetail" component={JobDetail} />
          <Stack.Screen name="SavedJobs" component={SavedJobs} />
+         <Stack.Screen name="Tabstu" component={Tabstu} options={{ headerShown: false }} />
+         <Stack.Screen name="Studentresume" component={Studentresume} />
+         <Stack.Screen name="Studentoremployee" component={Studentoremployee} />
 
-
+   
          
       </Stack.Navigator>
     </NavigationContainer>
