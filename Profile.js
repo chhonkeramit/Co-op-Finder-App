@@ -1,8 +1,18 @@
 import { View,Text,Image,ScrollView,StyleSheet,TouchableOpacity} from "react-native";
 
 const Profile = ({navigation}) => {
+
+  const ViewProfilePressed = () => {
+    navigation.navigate('ViewProfile');
+  }
+
+
+
   return (
     <>
+    <TouchableOpacity style={styles.viewBtn} onPress={ViewProfilePressed}>
+       <Text style={styles.viewText}>View Profile</Text>
+     </TouchableOpacity>
     <TouchableOpacity
           onPress={() => navigation.navigate('SavedJobs')}
         
@@ -28,6 +38,20 @@ const styles = StyleSheet.create({
       paddingHorizontal: 24,
       flex:1,
   },
+  viewBtn:
+ {
+   width:"100%",
+   borderRadius:25,
+   
+   height:55,
+   alignItems:"center",
+   justifyContent:"center",
+   marginTop:40,
+   backgroundColor:'#2557a7'
+ },
+ viewText:{
+  fontWeight:"bold",
+ },
   alignSearch:{
     flexDirection:'row',
     justifyContent: 'space-around'
