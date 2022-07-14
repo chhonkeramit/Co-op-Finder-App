@@ -64,7 +64,7 @@ const JobDetail = ({route,navigation}) => {
           
            <View style={styles.align}>
              <TouchableOpacity onPress={ApplyButton}><Text style={styles.ApplyButton}>Apply now</Text></TouchableOpacity>
-             <TouchableOpacity><Text style={{marginTop:13, fontSize:20, color:'gray'}}><FontAwesomeIcon color={'#a9a9a9'} size={30} icon={ faBookBookmark } />Saved Jobs</Text></TouchableOpacity>
+             {/* <TouchableOpacity><Text style={{marginTop:13, fontSize:20, color:'gray'}}><FontAwesomeIcon color={'#a9a9a9'} size={30} icon={ faBookBookmark } />Saved Jobs</Text></TouchableOpacity> */}
            </View>
       </View>
       <View style = {styles.SecondContainer}>
