@@ -34,9 +34,7 @@ export default function App() {
          <Stack.Screen name="Tabstu" component={Tabstu} options={{ headerShown: false }} />
          <Stack.Screen name="Studentresume" component={Studentresume} />
          <Stack.Screen name="Studentoremployee" component={Studentoremployee} />
-
-   
-         
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
