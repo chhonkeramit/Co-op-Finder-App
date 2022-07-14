@@ -41,18 +41,25 @@ const JobDetail = ({route,navigation}) => {
   });
    }
    function ApplyButton(){
+  //   var query = fireDB.collection(auth.currentUser?.email)
+  //   query = query.where('User', '==',auth.currentUser?.email)
+  //   if(query) {
+  //     alert("You have already filled this position. Please go back and apply others Jobs")
+  //   }
+  //  else {
     fireDB.collection(auth.currentUser?.email).add({
       User: auth.currentUser?.email  ,
       Company_Name: displaydata[0],
       Job_Description:displaydata[1],
       Job_Title: displaydata[2],
       Location: displaydata[4], 
-      Job_Type: displaydata[3]
+      Job_Type: displaydata[3],
+      Date: new Date().toLocaleString(),
     })
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
     })
-
+  // }
    }
      return (
       <ScrollView>
