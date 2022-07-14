@@ -14,7 +14,6 @@ import SavedJobs from './components/SavedJobs';
 import Studentoremployee from './components/Studentoremployee';
 import Studentresume from './components/Studentresume';
 import Tabstu from './Tabstu';
-import VProfile from './components/VProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,10 +34,7 @@ export default function App() {
          <Stack.Screen name="Tabstu" component={Tabstu} options={{ headerShown: false }} />
          <Stack.Screen name="Studentresume" component={Studentresume} />
          <Stack.Screen name="Studentoremployee" component={Studentoremployee} />
-         <Stack.Screen name="ViewProfile" component={VProfile} />
-
-   
-         
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -52,3 +48,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
