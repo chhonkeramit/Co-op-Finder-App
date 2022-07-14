@@ -6,7 +6,7 @@ import { auth } from '../firebase'
 
 const LoginPage = () => {
     const [email, setEmail] = useState('amit@gmail.com');
-    const [password, setPassword] = useState('amit@123');
+    const [password, setPassword] = useState('Amit@12345');
 
     const navigation = useNavigation();
 

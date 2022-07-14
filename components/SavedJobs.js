@@ -1,7 +1,7 @@
 import React from 'react';
 import { auth, fireDB } from '../firebase';
 import { useState,useEffect} from "react";
-import { View,Text,Image,ScrollView,StyleSheet,TouchableOpacity} from "react-native";
+import { View,Text,Image,ScrollView,StyleSheet,TouchableOpacity,Alert} from "react-native";
 import { Card } from 'react-native-elements';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faAnglesRight, faBriefcase, faClock, faLocationDot, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +20,7 @@ const SavedJobs = ({navigation}) => {
       const cardSelected = (ind) => {
         console.log("card selected"+ind);
         // console.log(ind);
+        Alert.alert("Already applied ");
         navigation.navigate("JobDetail",{index:ind})
       }
 
@@ -34,6 +35,7 @@ const SavedJobs = ({navigation}) => {
           newArr.push(`${doc.data().Job_Title}`)
           newArr.push(`${doc.data().Job_Type}`)
           newArr.push(`${doc.data().Location}`)
+          newArr.push(`${doc.data().Date}`)
           bigArr.push(newArr)
           });
           setUserLocation(bigArr)
@@ -90,7 +92,8 @@ const SavedJobs = ({navigation}) => {
                         color: 'black',
                       }} ><FontAwesomeIcon icon={ faAnglesRight } color='royalblue'/>  Easily Apply to this Job</Text>
                       <Text style={styles.title} >{row[1]}</Text>
-                      
+                      <Text></Text>
+                      <Text style={styles.loc} > Applied on {row[5]}</Text>
                     </Card>
                     </TouchableOpacity>
 
