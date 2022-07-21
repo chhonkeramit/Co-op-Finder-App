@@ -7,6 +7,8 @@ import { auth, fireDB } from '../firebase'
 
 const VProfile = ({ navigation }) => {
   const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+
 
   const remove = () => {
     const user = auth.currentUser;
@@ -36,6 +38,23 @@ navigation.replace("VProfile")
 });
 }
 
+const updatePass = () => {
+  // const auth = getAuth();
+
+const user = auth.currentUser;
+// const newPassword = getASecureRandomPassword();
+
+user.updatePassword(pass).then(() => {
+  // Update successful.
+  alert("Password updated Successfuly")
+  alert("Please Login Again To Check Your Updated Password")
+}).catch((error) => {
+  // An error ocurred
+  alert("Error")
+  // ...
+});
+}
+
 
 
 
@@ -43,9 +62,7 @@ navigation.replace("VProfile")
         <View style={styles.container}>
 
             <Image style={styles.image}  source={require('../assets/profile.jpg')} />
-            {/* <TouchableOpacity style={styles.password} onPress={console.log("password change")}>
-            <Text style={styles.passwordText}>Change Password</Text>
-            </TouchableOpacity> */}
+           
         <Text style={{fontWeight:'bold', textAlign:'center'}}>User Name :{auth.currentUser?.email}</Text>
 
 
@@ -63,6 +80,17 @@ navigation.replace("VProfile")
             {/* <TouchableOpacity style={styles.deleteBtn} onPress={console.log("delete profile")}>
                 <Text style={styles.deleteText}>Delete Profile</Text>
             </TouchableOpacity> */}
+        <TextInput
+          placeholder="Update Your Password"
+          onChangeText={text => setPass(text)}
+          style={{ color: 'black', fontWeight: 'bold', textAlign: 'center' }}
+        />
+        <Button
+        color='green'
+        title="Update Password"
+        onPress={updatePass}
+        ></Button>
+
              <Button
 
         color='orangered'

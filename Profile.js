@@ -18,7 +18,7 @@ const Profile = ({navigation}) => {
         
       >
          <Text style={{bottom:-33,right:-82, fontWeight:'bold'}}>Saved Jobs</Text>
-    <Image style = {{width:45,height:45,marginLeft:30}} source={{ uri: 'https://flyclipart.com/thumb2/heart-clipart-black-and-white-heart-black-and-white-clip-art-715443.png' }}></Image>
+    <Image style = {{width:45,height:45,marginLeft:30}} source={{ uri: 'https://w7.pngwing.com/pngs/997/899/png-transparent-red-heart-illustration-heart-icon-3d-red-heart-love-heart-emoticon.png' }}></Image>
      
       </TouchableOpacity>
       <TouchableOpacity
