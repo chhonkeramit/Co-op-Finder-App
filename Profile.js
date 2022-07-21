@@ -10,9 +10,7 @@ const Profile = ({navigation}) => {
 
   return (
     <>
-    <TouchableOpacity style={styles.viewBtn} onPress={ViewProfilePressed}>
-       <Text style={styles.viewText}>View Profile</Text>
-     </TouchableOpacity>
+   
     <TouchableOpacity
           onPress={() => navigation.navigate('SavedJobs')}
         
@@ -29,6 +27,9 @@ const Profile = ({navigation}) => {
     <Image style = {{width:45,height:45,marginLeft:30}} source={{ uri: 'https://www.freeiconspng.com/thumbs/sign-out-icon/sign-out-logout-icon-0.png' }}></Image>
      
       </TouchableOpacity>
+      <TouchableOpacity style={styles.viewBtn} onPress={ViewProfilePressed}>
+       <Text style={styles.viewText}>View Profile</Text>
+     </TouchableOpacity>
     </>
     )
 }
@@ -40,17 +41,19 @@ const styles = StyleSheet.create({
   },
   viewBtn:
  {
-   width:"100%",
+   width:"90%",
    borderRadius:25,
-   
    height:55,
    alignItems:"center",
    justifyContent:"center",
    marginTop:40,
-   backgroundColor:'#2557a7'
+   marginLeft :20,
+   marginRight:20,
+   backgroundColor:'#f0e68c'
  },
  viewText:{
   fontWeight:"bold",
+  fontSize : 16
  },
   alignSearch:{
     flexDirection:'row',

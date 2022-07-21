@@ -20,51 +20,34 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator style={styles.container}>
+    <NavigationContainer style={styles.container}>
+      <Stack.Navigator  screenOptions={{
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }} >
         <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginPage} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}  />
          <Stack.Screen name="Register" component={RegisterPage} />
          <Stack.Screen name="StudentRegister" component={StudentRegister} />
          <Stack.Screen name="RecruiterRegister" component={RecruiterRegister} />
          <Stack.Screen name="Tab" component={Tab} options={{ headerShown: false }} />
          <Stack.Screen name="PostJob" component={PostJob} />
          <Stack.Screen name="Profile" component={Profile} />
-         <Stack.Screen name="JobDetail" component={JobDetail}  options={{
-          title: 'Job Details',
-          headerStyle: {
-            backgroundColor: '#696969',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}/>
+         <Stack.Screen name="JobDetail" component={JobDetail}  options={{ 
+          title: 'Job Details'}}/>
          <Stack.Screen name="SavedJobs" component={SavedJobs}  options={{
-          title: 'Saved Jobs',
-          headerStyle: {
-            backgroundColor: '#ff7f50',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }} />
+          title: 'Saved Jobs'}} />
          <Stack.Screen name="Tabstu" component={Tabstu} options={{ headerShown: false }} />
-         <Stack.Screen name="Studentresume" component={Studentresume} />
+         <Stack.Screen name="Studentresume" component={Studentresume}  options={{
+          title: 'Student Resume'}}/>
          <Stack.Screen name="Studentoremployee" component={Studentoremployee}  options={{
-          title: 'Student/Employee',
-          headerStyle: {
-            backgroundColor: '#48d1cc',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }} />
+          title: 'Student/Employee'}}/>
          <Stack.Screen name="ViewProfile" component={VProfile} />
-
-   
          
       </Stack.Navigator>
     </NavigationContainer>
@@ -77,5 +60,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
   },
 });
