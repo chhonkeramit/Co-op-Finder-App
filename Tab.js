@@ -40,7 +40,7 @@ const Tabs = () => {
         >
             <Tab.Screen options={{ 
                 headerStyle: {
-                backgroundColor: '#F13507'
+                backgroundColor: '#f4511e'
                   },
                  headerTintColor: "white"}} 
                  name='Home' component={Home} />
@@ -55,12 +55,12 @@ const Tabs = () => {
             <Tab.Screen component={PostJob} name="PostJob" 
             options={{ 
                 headerStyle: {
-                backgroundColor: 'green'
+                backgroundColor: '#f4511e'
                   },
                  headerTintColor: "white"}} />
             <Tab.Screen options={{ 
                 headerStyle: {
-                backgroundColor: '#2557a7'
+                backgroundColor: '#f4511e'
                   },
                  headerTintColor: "white"}} 
             

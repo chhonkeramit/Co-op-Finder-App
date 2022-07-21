@@ -70,34 +70,46 @@ user.updatePassword(pass).then(() => {
           placeholder="Update Your Email"
             // value={email}
           onChangeText={text => setEmail(text)}
-          style={{ color: 'black', fontWeight: 'bold', textAlign: 'center' }}
+          style={{ color: 'black', fontWeight: 'bold', textAlign: 'center',marginTop:20 }}
         />
-           <Button
+           {/* <Button
         color='green'
         title="Update User"
         onPress={updateUser}
-        ></Button>
+        ></Button> */}
+
+        <TouchableOpacity style={styles.viewBtn} onPress={updateUser}>
+       <Text style={styles.viewText}>Update User</Text>
+     </TouchableOpacity>
             {/* <TouchableOpacity style={styles.deleteBtn} onPress={console.log("delete profile")}>
                 <Text style={styles.deleteText}>Delete Profile</Text>
             </TouchableOpacity> */}
         <TextInput
           placeholder="Update Your Password"
           onChangeText={text => setPass(text)}
-          style={{ color: 'black', fontWeight: 'bold', textAlign: 'center' }}
+          style={{ color: 'black', fontWeight: 'bold', textAlign: 'center' , marginTop:20}}
         />
-        <Button
-        color='green'
+        {/* <Button
+       style={styles.viewBtn}
         title="Update Password"
         onPress={updatePass}
-        ></Button>
+        ></Button> */}
 
-             <Button
+<TouchableOpacity style={styles.viewBtn} onPress={updatePass}>
+       <Text style={styles.viewText}>Update Password</Text>
+     </TouchableOpacity>
+
+             {/* <Button
 
         color='orangered'
         title="Delete User"
         onPress={remove}
         >
-             </Button> 
+             </Button>  */}
+
+             <TouchableOpacity style={styles.deletebtn} onPress={remove}>
+       <Text style={styles.viewText}>Delete User</Text>
+     </TouchableOpacity>
         
         </View>
     );
@@ -133,5 +145,32 @@ const styles = StyleSheet.create({
       deleteText:{
          fontWeight:"bold",
          fontSize:30,
+      },
+      viewBtn:
+      {
+        width:"90%",
+        borderRadius:25,
+        height:55,
+        alignItems:"center",
+        justifyContent:"center",
+        marginTop:40,
+        marginLeft :20,
+        marginRight:20,
+        backgroundColor:'#008b8b'
+      },
+      viewText:{
+       fontWeight:"bold",
+       fontSize : 16
+      },
+      deletebtn :{
+        width:"90%",
+        borderRadius:25,
+        height:55,
+        alignItems:"center",
+        justifyContent:"center",
+        marginTop:40,
+        marginLeft :20,
+        marginRight:20,
+        backgroundColor:'#dc143c'
       },
 });

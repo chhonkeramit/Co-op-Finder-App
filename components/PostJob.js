@@ -149,10 +149,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonOutline: {
-    backgroundColor: 'white',
+    backgroundColor: '#f0e68c',
     marginTop: 5,
-    borderColor: '#0782F9',
-    borderWidth: 2,
+    // borderColor: '#0782F9',
+    // borderWidth: 2,
   },
   buttonText: {
     color: 'white',

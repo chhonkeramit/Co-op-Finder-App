@@ -29,7 +29,7 @@ const Tabstu = () => {
                 // else if (route.name === "ViewCart"){
                 // iconName = focused ? 'cart-plus' : 'cart-plus';
                 // }
-                else if (route.name === "Studentresume"){
+                else if (route.name === "StudentResume"){
                     iconName = focused ? 'rocket' : 'rocket';
                 
             }
@@ -40,7 +40,7 @@ const Tabstu = () => {
         >
             <Tab.Screen options={{ 
                 headerStyle: {
-                backgroundColor: '#F13507'
+                backgroundColor: '#f4511e'
                   },
                  headerTintColor: "white"}} 
                  name='Home' component={Home} />
@@ -52,15 +52,15 @@ const Tabstu = () => {
                   },
                  headerTintColor: "white"}} /> */}
 
-            <Tab.Screen component={Studentresume} name="Studentresume" 
+            <Tab.Screen component={Studentresume} name="StudentResume" 
             options={{ 
                 headerStyle: {
-                backgroundColor: 'green'
+                backgroundColor: '#f4511e'
                   },
                  headerTintColor: "white"}} />
             <Tab.Screen options={{ 
                 headerStyle: {
-                backgroundColor: '#2557a7'
+                backgroundColor: '#f4511e'
                   },
                  headerTintColor: "white"}} 
             
