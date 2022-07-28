@@ -10,6 +10,13 @@ const Profile = ({navigation}) => {
 
   return (
     <>
+    
+    <TouchableOpacity
+          onPress={() => navigation.navigate('Location')}  
+      >
+         <Text style={{bottom:-33,right:-82, fontWeight:'bold'}}>My Location</Text>
+         <Image style = {{width:45,height:45,marginLeft:30}} source={{ uri: 'https://www.clipartmax.com/png/middle/17-170231_location-icons-location-png.png' }}></Image>
+      </TouchableOpacity>
    
     <TouchableOpacity
           onPress={() => navigation.navigate('SavedJobs')}
