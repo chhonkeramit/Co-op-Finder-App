@@ -15,6 +15,7 @@ import Studentoremployee from './components/Studentoremployee';
 import Studentresume from './components/Studentresume';
 import Tabstu from './Tabstu';
 import VProfile from './components/VProfile';
+import Location from './components/Location';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,7 +48,9 @@ export default function App() {
           title: 'Student Resume'}}/>
          <Stack.Screen name="Studentoremployee" component={Studentoremployee}  options={{
           title: 'Student/Employee'}}/>
-         <Stack.Screen name="ViewProfile" component={VProfile} />
+         <Stack.Screen name="ViewProfile" component={VProfile} options={{ 
+          title: 'My Profile'}} />
+         <Stack.Screen name="Location" component={Location} />
          
       </Stack.Navigator>
     </NavigationContainer>
