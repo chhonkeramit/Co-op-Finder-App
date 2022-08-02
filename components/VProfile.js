@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         height:55,
         alignItems:"center",
         justifyContent:"center",
-        marginTop:40,
+        marginTop:10,
         marginLeft :20,
         marginRight:20,
         backgroundColor:'#008b8b'
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         height:55,
         alignItems:"center",
         justifyContent:"center",
-        marginTop:40,
+        marginTop:10,
         marginLeft :20,
         marginRight:20,
         backgroundColor:'#dc143c'
